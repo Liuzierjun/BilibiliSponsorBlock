@@ -1,10 +1,13 @@
-import * as CompileConfig from "../config.json";
-
 import "content-scripts-register-polyfill";
 import Config from "./config";
-import { sendRealRequestToCustomServer, setupBackgroundRequestProxy } from "./requests/background-request-proxy";
-import { Registration } from "./types";
+import { sendRealRequestToCustomServer } from "./requests/background-request-proxy";
+import { clearAllCacheBackground, segmentsCache, videoLabelCache } from "./requests/background/backgroundCache";
+import { getSegmentsBackground } from "./requests/background/segmentRequest";
+import { getVideoLabelBackground } from "./requests/background/videoLabelRequest";
+import { submitVote } from "./requests/background/voteRequest";
+import { CacheStats, NewVideoID, Registration } from "./types";
 import { chromeP } from "./utils/browserApi";
+import { getHash } from "./utils/hash";
 import { generateUserID } from "./utils/setup";
 import { setupTabUpdates } from "./utils/tab-updates";
 
@@ -29,11 +32,6 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
         case "openPage":
             chrome.tabs.create({ url: chrome.runtime.getURL(request.url) });
             return false;
-        case "submitVote":
-            submitVote(request.type, request.UUID, request.category).then(callback);
-
-            //this allows the callback to be called later
-            return true;
         case "registerContentScript":
             registerFirefoxContentScript(request);
             return false;
@@ -179,57 +177,78 @@ async function unregisterFirefoxContentScript(id: string) {
     }
 }
 
-async function submitVote(type: number, UUID: string, category: string) {
-    let userID = Config.config.userID;
-
-    if (userID == undefined || userID === "undefined") {
-        //generate one
-        userID = generateUserID();
-        Config.config.userID = userID;
-    }
-
-    const typeSection = type !== undefined ? "&type=" + type : "&category=" + category;
-
-    try {
-        const response = await asyncRequestToServer(
-            "POST",
-            "/api/voteOnSponsorTime?UUID=" + UUID + "&userID=" + userID + typeSection
-        );
-
-        if (response.ok) {
-            return {
-                successType: 1,
-                responseText: await response.text(),
-            };
-        } else if (response.status == 405) {
-            //duplicate vote
-            return {
-                successType: 0,
-                statusCode: response.status,
-                responseText: await response.text(),
-            };
-        } else {
-            //error while connect
-            return {
-                successType: -1,
-                statusCode: response.status,
-                responseText: await response.text(),
-            };
+function setupBackgroundRequestProxy() {
+    chrome.runtime.onMessage.addListener((request, sender, callback) => {
+        if (request.message === "sendRequest") {
+            sendRealRequestToCustomServer(request.type, request.url, request.data, request.headers)
+                .then(callback)
+                .catch(() => {
+                    callback({ responseText: "", status: -1, ok: false });
+                });
+            return true;
         }
-    } catch (e) {
-        console.error(e);
-        return {
-            successType: -1,
-            statusCode: -1,
-            responseText: "",
-        };
-    }
+
+        if (request.message === "getHash") {
+            getHash(request.value, request.times)
+                .then(callback)
+                .catch((e) => {
+                    callback({ error: e?.message });
+                });
+            return true;
+        }
+
+        // ============ Request Handlers ============
+        if (request.message === "getVideoLabel") {
+            getVideoLabelBackground(request.videoID as NewVideoID, Boolean(request.refreshCache))
+                .then((category) => callback({ category }))
+                .catch(() => callback({ category: null }));
+            return true;
+        }
+
+        if (request.message === "getSegments") {
+            getSegmentsBackground(
+                request.videoID as NewVideoID,
+                (request.extraRequestData as Record<string, unknown>) || {},
+                Boolean(request.ignoreCache)
+            )
+                .then((response) => callback({ response }))
+                .catch(() => callback({ response: { segments: null, status: -1 } }));
+            return true;
+        }
+
+        if (request.message === "submitVote") {
+            submitVote(request.type, request.UUID, request.category).then(callback);
+            return true;
+        }
+
+        // ============ Cache Management Handlers ============
+        if (request.message === "getCacheStats") {
+            getCacheStatsBackground()
+                .then((stats) => callback({ stats }))
+                .catch(() => callback({ stats: null }));
+            return true;
+        }
+
+        if (request.message === "clearAllCache") {
+            clearAllCacheBackground()
+                .then(() => callback({ ok: true }))
+                .catch(() => callback({ ok: false }));
+            return true;
+        }
+
+        return false;
+    });
 }
 
-async function asyncRequestToServer(type: string, address: string, data = {}) {
-    const serverAddress = Config.config.testingServer
-        ? CompileConfig.testingServerAddress
-        : Config.config.serverAddress;
+/**
+ * Get cache statistics for segments and video labels caches
+ */
+async function getCacheStatsBackground(): Promise<{ segments: CacheStats; videoLabels: CacheStats }> {
+    const segmentStats = segmentsCache.getCacheStats();
+    const videoLabelStats = videoLabelCache.getCacheStats();
 
-    return await sendRealRequestToCustomServer(type, serverAddress + address, data);
+    return {
+        segments: segmentStats,
+        videoLabels: videoLabelStats,
+    };
 }

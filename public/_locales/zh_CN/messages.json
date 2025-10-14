@@ -1,13 +1,13 @@
 {
     "fullName": {
-        "message": "B站空降助手",
+        "message": "小电视空降助手",
         "description": "Name of the extension."
     },
     "shortName": {
         "message": "空降助手"
     },
     "Description": {
-        "message": "恰饭？桌子都给你掀了(/= _ =)/~┴┴   带你精准空降到赞助广告结束或者高能时刻，自动跳过视频中的赞助广告、订阅提醒等片段。你也可以亲自标记视频中的广告并上传，所有人都会从您的贡献中受益。",
+        "message": "恰饭？桌子都给你掀了(/= _ =)/~┴┴ 带你精准空降到赞助广告结束或者高能时刻，自动跳过视频中的赞助广告、订阅提醒等片段。你也可以亲自标记视频中的广告并上传，所有人都会从您的贡献中受益。",
         "description": "Description of the extension."
     },
     "400": {
@@ -95,7 +95,7 @@
         "message": "取消创建片段"
     },
     "noVideoID": {
-        "message": "未找到哔哩哔哩视频。\n如果识别错误，请刷新此页面。"
+        "message": "未找到视频。\n如果识别错误，请刷新此页面。"
     },
     "refreshSegments": {
         "message": "刷新片段"
@@ -134,7 +134,7 @@
         "message": "排序片段"
     },
     "submitCheck": {
-        "message": "您确定要提交它吗？"
+        "message": "您确定要提交吗？"
     },
     "whitelistChannel": {
         "message": "将UP主列入白名单"
@@ -273,7 +273,7 @@
         "message": "半透明所有的空降提醒弹窗"
     },
     "longDescription": {
-        "message": "B站空降助手可帮您跳过B站视频中的赞助广告、开场结尾、三连提醒和其他烦人片段。空降助手是一个众包的浏览器扩展，任何人可以提交B站视频中的广告和其他片段的开始和结束时间。如果有一人提交了信息，其他所有使用此扩展的人都能直接跳过广告片段。您也可以跳过音乐视频中的非音乐部分。",
+        "message": "小电视空降助手可帮您跳过小电视网站视频中的赞助广告、开场结尾、三连提醒和其他烦人片段。空降助手是一个众包的浏览器扩展，任何人可以提交视频中的广告和其他片段的开始和结束时间。如果有一人提交了信息，其他所有使用此扩展的人都能直接跳过广告片段。您也可以跳过音乐视频中的非音乐部分。",
         "description": "Full description of the extension on the store pages."
     },
     "website": {
@@ -495,7 +495,58 @@
         "message": "空降助手服务器地址"
     },
     "customServerAddressDescription": {
-        "message": "B站空降助手的服务器地址。\n不建议更改，除非您有自己的服务器。"
+        "message": "小电视空降助手的服务器地址。\n不建议更改，除非您有自己的服务器。"
+    },
+    "cacheManagement": {
+        "message": "缓存管理"
+    },
+    "segmentResponseCache": {
+        "message": "视频片段缓存"
+    },
+    "videoLabelsCache": {
+        "message": "视频标签缓存"
+    },
+    "totalCacheSize": {
+        "message": "总缓存大小"
+    },
+    "refreshCacheStats": {
+        "message": "刷新统计"
+    },
+    "clearAllCache": {
+        "message": "清除所有缓存"
+    },
+    "confirmClearAllCache": {
+        "message": "确定要清除所有缓存吗？此操作不可撤销。"
+    },
+    "clearAllCacheSuccess": {
+        "message": "所有缓存已成功清除"
+    },
+    "clearAllCacheFailed": {
+        "message": "清除缓存失败"
+    },
+    "cacheManagementDescription": {
+        "message": "显示当前缓存使用情况。缓存可以加速视频加载，但会占用存储空间。"
+    },
+    "enableCache": {
+        "message": "启用缓存"
+    },
+    "enableCacheDescription": {
+        "message": "启用缓存可以提高视频片段和标签的加载速度。关闭时会清除所有已存储的缓存数据。"
+    },
+    "cacheType": {
+        "message": "缓存类型"
+    },
+    "cacheSize": {
+        "message": "缓存大小"
+    },
+    "cacheEntries": {
+        "message": "缓存项数"
+    },
+    "dailyHits": {
+        "message": "今日缓存命中次数"
+    },
+    "dailyDataRetrieved": {
+        "message": "今日缓存读取量"
     },
     "save": {
         "message": "保存"
@@ -590,10 +641,10 @@
         "message": "跳过后的视频仍然流畅，就好像跳过的片段不存在一样"
     },
     "category_sponsor": {
-        "message": "广告"
+        "message": "赞助/恰饭"
     },
     "category_sponsor_description": {
-        "message": "付费推广、付费推荐和直接广告。不是自我推广或免费提及他们喜欢的商品/创作者/网站/产品。"
+        "message": "付费推广、推荐和直接广告。不是自我推广或免费提及他们喜欢的商品/创作者/网站/产品。"
     },
     "category_sponsor_guideline1": {
         "message": "付费推广"
@@ -617,7 +668,7 @@
         "message": "不是公司设计的产品和周边"
     },
     "category_exclusive_access": {
-        "message": "柔性推广/品牌合作"
+        "message": "独家访问/抢先体验"
     },
     "category_exclusive_access_description": {
         "message": "仅用于对整个视频进行标记。适用于展示UP主免费或获得补贴后使用的产品、服务或场地的视频。"
@@ -630,7 +681,7 @@
         "message": "整个视频都在展示免费或获得补贴后使用的内容"
     },
     "category_interaction": {
-        "message": "三连/订阅提醒"
+        "message": "三连/互动提醒"
     },
     "category_interaction_description": {
         "message": "视频中间简短提醒观众来一键三连或关注。 如果片段较长，或是有具体内容，则应分类为自我推广。"
@@ -799,9 +850,33 @@
         "message": "当整个视频都是某一类别时显示图标",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
-    "fullVideoLabelsOnThumbnails": {
-        "message": "在视频封面上显示标签",
+    "fullVideoLabelsOnThumbnailsMode": {
+        "message": "当整个视频都是某一类别时，在视频卡片上 ",
         "description": "Referring to the category pill that is shown on videos that are entirely sponsor or entirely selfpromo on recommended videos, in searches or on the homepage."
+    },
+    "fullVideoLabelsOnThumbnailsMode0": {
+        "message": "无操作"
+    },
+    "fullVideoLabelsOnThumbnailsMode1": {
+        "message": "显示标签"
+    },
+    "fullVideoLabelsOnThumbnailsMode2": {
+        "message": "隐藏此视频卡片 - 不推荐"
+    },
+    "fullVideoLabelsOnThumbnailsMode2_Warning": {
+        "message": "这会隐藏大量视频卡片，包括你想看的内容，同时还会影响排版, 请谨慎使用此选项。\n被隐藏的视频不会有任何标记，且无法手动查看。\n更推荐启用“模糊此视频卡片 - 鼠标悬浮可查看内容”。"
+    },
+    "fullVideoLabelsOnThumbnailsMode3": {
+        "message": "模糊此视频卡片 - 鼠标悬浮可查看内容"
+    },
+    "fullVideoLabelsOnThumbnailsMode4": {
+        "message": "模糊此视频卡片"
+    },
+    "fullVideoLabelsOnThumbnailsMode5": {
+        "message": "遮挡此视频卡片 - 不推荐"
+    },
+    "fullVideoBlock": {
+        "message": ""
     },
     "previewColor": {
         "message": "未提交颜色",
@@ -865,7 +940,7 @@
         "message": "手动隐藏"
     },
     "channelDataNotFound": {
-        "message": "未检测到UP主ID。如果您正在使用嵌入式视频播放器，请到Bilibili网站观看。也可能是B站更改了页面布局，如果您认为是此问题，请在此评论：",
+        "message": "未检测到UP主ID。如果您正在使用嵌入式视频播放器，请到网站观看。也可能是网站更改了页面布局，如果您认为是此问题，请在此评论：",
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at."
     },
     "invidiousPermissionRefresh": {
@@ -946,7 +1021,7 @@
     "chapterNameTooltipWarning": {
         "message": "提交的章节名称与现有类别名称相似。如果已经存在分类，您应该优先使用它。"
     },
-    "experiementOptOut": {
+    "experimentOptOut": {
         "message": "关闭所有实验性功能",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
     },
@@ -968,7 +1043,7 @@
     "warningError": {
         "message": "尝试确认警告时发生错误："
     },
-    "deArrowMessageRecieved": {
+    "deArrowMessageReceived": {
         "message": "您收到了来自版主的提示"
     },
     "Donate": {
@@ -1075,7 +1150,7 @@
         "message": "更改"
     },
     "bilibiliKeybindWarning": {
-        "message": "这是B站内置的快捷方式。您确定要使用吗？"
+        "message": "这是网站内置的快捷方式。您确定要使用吗？"
     },
     "betaServerWarning": {
         "message": "测试服务器已启用！"
@@ -1099,20 +1174,11 @@
         "message": "导入",
         "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
     },
-    "redeemSuccess": {
-        "message": "兑换成功！"
-    },
-    "redeemFailed": {
-        "message": "注册码无效"
+    "disclaimer": {
+        "message": "所有片段均由用户提交，由用户投票排序"
     },
     "hideNewFeatureUpdates": {
         "message": "隐藏新功能提示"
-    },
-    "redeem": {
-        "message": "兑换"
-    },
-    "enterLicenseKey": {
-        "message": "输入注册码"
     },
     "unsubmittedSegmentCounts": {
         "message": "您在 {1} 中有 {0}",
@@ -1208,7 +1274,7 @@
         "message": "请在提交前预览您的片段，你可以使用快捷键预览：",
         "description": "Appears when trying to submit a segment without previewing it first. After the colon, the shortcut will appear"
     },
-    "hasbindedPortVideo": {
+    "hasBoundPortVideo": {
         "message": "已绑定视频："
     },
     "enterPortVideoURL": {
@@ -1233,28 +1299,28 @@
         "message": "同步搬运视频"
     },
     "dynamicAndCommentSponsorBlocker": {
-        "message": "隐藏 动态主页/评论区 的贴片广告"
+        "message": "隐藏 动态主页/评论区 的商品链接"
     },
     "dynamicAndCommentSponsorBlockerDescription": {
-        "message": "贴片广告即 动态主页/评论区 包含推广内容的动态/评论"
+        "message": "商品链接即 动态主页/评论区 包含推广内容的动态/评论"
     },
     "dynamicSpaceSponsorBlocker": {
-        "message": "隐藏UP主主页动态的广告"
+        "message": "隐藏UP主主页动态的内容"
     },
     "dynamicSpaceSponsorBlockerDescription": {
-        "message": "UP主主页动态的广告也会隐藏，不推荐开启，以方便查看UP主的完整动态"
+        "message": "UP主主页动态的商品链接也会隐藏。不推荐开启，以方便查看UP主的完整动态"
     },
     "dynamicAndCommentSponsorWhitelistedChannels": {
         "message": "无视您的白名单"
     },
     "dynamicAndCommentSponsorWhitelistedChannelsDescription": {
-        "message": "即使是您白名单中的UP主，也会执行操作"
+        "message": "即使是您白名单中的UP主，也会隐藏相应的内容"
     },
     "dynamicSponsorShow": {
-        "message": "显示广告内容"
+        "message": "显示链接内容"
     },
     "dynamicSponsorHide": {
-        "message": "隐藏广告内容"
+        "message": "隐藏链接内容"
     },
     "dynamicAndCommentSponsorRegexPattern": {
         "message": "屏蔽匹配正则: "
@@ -1263,56 +1329,62 @@
         "message": "默认正则表达式偏保守，建议根据您关注的UP主动态内容自行修改(如果您会编写正则表达式)\n例如您关注的UP主们经常发某一个产品的广告，您可以将该产品的名称添加到正则表达式中"
     },
     "category_dynamicSponsor_sponsor": {
-        "message": "广告"
+        "message": "商品链接"
     },
     "category_dynamicSponsor_sponsor_description": {
-        "message": "即包含商品链接，目前阶段无法完全屏蔽，因为部分软广可能不附带链接或链接不是B站规范的"
+        "message": "即包含商品链接，目前阶段无法完全屏蔽，因为部分软广可能不附带链接或链接不是规范的"
     },
     "category_dynamicSponsor_forward_sponsor": {
-        "message": "转发广告"
+        "message": "转发商品链接"
     },
     "category_dynamicSponsor_forward_sponsor_description": {
-        "message": "当转发动态是包含商品链接的UP主动态时，该动态会被视为转发广告"
+        "message": "当转发动态是包含商品链接的UP主动态时，该动态会被视为“转发商品链接”"
     },
-    "category_dynamicSponsor_suspicion_sponsor":{
-        "message": "疑似广告"
+    "category_dynamicSponsor_suspicion_sponsor": {
+        "message": "疑似商品链接"
     },
     "category_dynamicSponsor_suspicion_sponsor_description": {
-        "message": "使用正则表达式对内容进行匹配来额外屏蔽软广，是对“ 广告 ”的补充，可能会误屏蔽或漏屏蔽部分内容"
+        "message": "使用正则表达式对内容进行匹配来额外屏蔽柔性推广，是对“商品链接”的补充，可能会误屏蔽或漏屏蔽部分内容"
     },
-    "showOverlay_DynamicSponsor":{
+    "showOverlay_DynamicSponsor": {
         "message": "仅添加标签"
     },
-    "Hide_DynamicSponsor":{
+    "Hide_DynamicSponsor": {
         "message": "隐藏内容"
     },
-    "skipOptionDynamicSponsor":{
+    "skipOptionDynamicSponsor": {
         "message": "选项"
     },
-    "colorDynamicSponsor":{
+    "colorDynamicSponsor": {
         "message": "标签颜色"
     },
-    "DynamicSponsorMatch":{
+    "DynamicSponsorMatch": {
         "message": " 关键字: ",
         "tip": "空格是用来间隔的"
     },
-    "dynamicSponsorBlockerDebug":{
-        "message": "显示疑似广告匹配到的文字 / 正则表达式调试模式"
+    "dynamicSponsorBlockerDebug": {
+        "message": "显示疑似商品链接匹配到的文字 / 正则表达式调试模式"
     },
-    "dynamicSponsorBlockerDebugDescription":{
+    "dynamicSponsorBlockerDebugDescription": {
         "message": "把鼠标悬浮到标签时显示匹配到的文字"
     },
-    "commentSponsorBlock":{
+    "commentSponsorBlock": {
         "message": "启用评论区隐藏"
     },
-    "commentSponsorBlockDescription":{
-        "message": "评论区目前仅支持 \" 广告 \" 类别"
+    "commentSponsorBlockDescription": {
+        "message": "评论区目前仅支持“商品链接”类别"
     },
-    "dynamicSponsorBlock":{
+    "dynamicSponsorBlock": {
         "message": "启用动态主页隐藏"
     },
-    "dynamicSponsorBlockDescription":{
+    "dynamicSponsorBlockDescription": {
         "message": "动态主页支持全部类别 (不包含视频)"
+    },
+    "commentSponsorReplyBlock": {
+        "message": "隐藏“商品链接”评论下的热门子评论"
+    },
+    "commentSponsorReplyBlockDescription": {
+        "message": "启用后将会隐藏“商品链接”评论下默认显示的子评论\n您仍可以使用展开全部评论的方法查看全部评论 (即使是被隐藏的子评论)"
     },
     "requestVote": {
         "message": "片段标记准确吗？"

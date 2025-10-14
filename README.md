@@ -5,27 +5,27 @@
   <sub>Logo by <a href="https://github.com/munadikieh">@munadikieh</a>. Modified by Yaodong</sub>
 </p>
 
-<h1 align="center">B站空降助手</h1>
+<h1 align="center">小电视空降助手</h1>
 
 <div align="center">
 
 [![LICENSE](https://img.shields.io/github/license/hanydd/BilibiliSponsorBlock)](LICENSE)
 [![CI Status](https://img.shields.io/github/actions/workflow/status/hanydd/BilibiliSponsorBlock/ci.yml)](https://github.com/hanydd/BilibiliSponsorBlock/actions/workflows/ci.yml)
 
-[![用户数量](https://img.shields.io/badge/dynamic/json?url=http%3A%2F%2F47.103.74.95%2Fapi%2FgetTotalStats&query=activeUsers&suffix=人&label=用户&color=green&cacheSeconds=3600)](https://www.bsbsb.top/stats/)
-[![片段数量](https://img.shields.io/badge/dynamic/json?url=http%3A%2F%2F47.103.74.95%2Fapi%2FgetTotalStats&query=totalSubmissions&label=共提交了&suffix=个片段&color=red&cacheSeconds=3600)](https://www.bsbsb.top/stats/)
-[![节省时间](https://img.shields.io/badge/dynamic/json?url=http%3A%2F%2F47.103.74.95%2Fapi%2FgetTotalStats&query=minutesSaved&suffix=%E5%88%86%E9%92%9F&label=%E5%85%B1%E8%8A%82%E7%9C%81&color=orange&cacheSeconds=3600)](https://www.bsbsb.top/stats/)
+[![用户数量](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fbsbsb.top%2Fapi%2FgetTotalStats&query=activeUsers&suffix=人&label=用户&color=green&cacheSeconds=3600)](https://www.bsbsb.top/stats/)
+[![片段数量](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fbsbsb.top%2Fapi%2FgetTotalStats&query=totalSubmissions&label=共提交了&suffix=个片段&color=red&cacheSeconds=3600)](https://www.bsbsb.top/stats/)
+[![节省时间](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fbsbsb.top%2Fapi%2FgetTotalStats&query=minutesSaved&suffix=%E5%88%86%E9%92%9F&label=%E5%85%B1%E8%8A%82%E7%9C%81&color=orange&cacheSeconds=3600)](https://www.bsbsb.top/stats/)
 
 
-| Chrome | Edge | FireFox | 从文件安装 | 讨论群 |
-|----------|----------|----------|----------|----------|
-| [![Chrome Web Store](https://img.shields.io/chrome-web-store/v/eaoelafamejbnggahofapllmfhlhajdd?label=Chrome插件商店)](https://chrome.google.com/webstore/detail/eaoelafamejbnggahofapllmfhlhajdd) | [![Edge Web Store](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fmicrosoftedge.microsoft.com%2Faddons%2Fgetproductdetailsbycrxid%2Fkhkeolgobhdoloioehjgfpobjnmagfha&query=version&prefix=v&label=Edge插件商店&color=green)](https://microsoftedge.microsoft.com/addons/detail/khkeolgobhdoloioehjgfpobjnmagfha) | [![Firefox](https://img.shields.io/amo/v/bilisponsorblock?label=Mozilla插件商店)](https://addons.mozilla.org/zh-TW/firefox/addon/bilisponsorblock/) | [![文件安装](https://www.crxsoso.com/webstore/detail/eaoelafamejbnggahofapllmfhlhajdd)](https://www.crxsoso.com/webstore/detail/eaoelafamejbnggahofapllmfhlhajdd) | [![Group](https://img.shields.io/badge/Telegram-2CA5E0?style=flat-squeare&logo=telegram&logoColor=white)](https://t.me/bsbsb_top) [![QQ](https://img.shields.io/badge/371384235-EB1923?logo=tencent-qq&logoColor=white)](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=Zp6HSzPkZy0xIU75Ljtc80CxY8PoyZ4Z&authKey=WlINewkGvx8rQhpBxYVj%2B9xMKgqAaVixxfgRgBgSXMdwmmst7BeWk7XflpvZrhOb&noverify=0&group_code=371384235) |
+| Chrome | FireFox | 讨论群 |
+|---------|----------|----------|
+| [![Chrome Web Store](https://img.shields.io/chrome-web-store/v/eaoelafamejbnggahofapllmfhlhajdd?label=Chrome插件商店)](https://chrome.google.com/webstore/detail/eaoelafamejbnggahofapllmfhlhajdd) | [![Firefox](https://img.shields.io/amo/v/bilisponsorblock?label=Mozilla插件商店)](https://addons.mozilla.org/addon/bilisponsorblock/) | [![Group](https://img.shields.io/badge/Telegram-2CA5E0?style=flat-squeare&logo=telegram&logoColor=white)](https://t.me/bsbsb_top) |
 
 
 </div>
 
 
-受够了 B 站视频中无处不在的赞助广告了吗？受够了看了一半才发现的软广视频了吗？B 站空降助手是一款帮你精准空降到广告之后的浏览器插件。插件自动获取并跳过广告片段，让你的视频体验毫无中断！
+受够了视频中无处不在的赞助广告了吗？受够了看了一半才发现的软广视频了吗？小电视空降助手是一款帮你精准空降到广告之后的浏览器插件。插件自动获取并跳过广告片段，让你的视频体验毫无中断！
 
 除了广告之外，插件还支持跳过其他类别的片段，例如开场结尾的动画、一键三连提示，或者直接空降到视频封面的位置。插件中所有的标注片段都来自网友标注，您也可以提交自己的片段来为空降指挥部添砖加瓦。
 
@@ -33,15 +33,13 @@
 
 目前本项目由我个人在业余时间维护，如果你想支持我，欢迎查看[赞助](https://www.bsbsb.top/donate/)。
 
-本插件移植自油管插件[SponsorBlock](https://github.com/ajayyy/SponsorBlock)，保留了大部分的 UI 和使用方法，加入一些了 B 站特色的功能。
+本插件移植自插件[SponsorBlock](https://github.com/ajayyy/SponsorBlock)，保留了大部分的 UI 和使用方法，加入一些了小电视特色的功能。
 
 # 安装
 
-- 目前上架了[Chrome 应用商店](https://chromewebstore.google.com/detail/eaoelafamejbnggahofapllmfhlhajdd)，[Edge 应用商店](https://microsoftedge.microsoft.com/addons/detail/khkeolgobhdoloioehjgfpobjnmagfha)， [火狐应用商店](https://addons.mozilla.org/en-US/firefox/addon/bilisponsorblock/)。如果你知道更多流行的浏览器插件商店，欢迎留言~
+- 目前上架了[Chrome 应用商店](https://chromewebstore.google.com/detail/eaoelafamejbnggahofapllmfhlhajdd)，[火狐应用商店](https://addons.mozilla.org/en-US/firefox/addon/bilisponsorblock/)。如果你知道更多流行的浏览器插件商店，欢迎留言~
 
-- 如果你无法打开上面的商店，可以尝试从这里下载crx文件安装：https://www.crxsoso.com/webstore/detail/eaoelafamejbnggahofapllmfhlhajdd
-
-- 或者可以从 [Github Release](https://github.com/hanydd/BilibiliSponsorBlock/releases/latest) 页面获取未打包的插件。
+- 如果你无法打开上面的商店，可以尝试从从 [Github Release](https://github.com/hanydd/BilibiliSponsorBlock/releases/latest) 页面获取未打包的插件。
 
     1. 根据您浏览器的类型下载适合的版本，Chrome、Edge、360 和基于 Chromium 的国产浏览器下载 `ChromiumExtension.zip`；火狐浏览器下载`FirefoxExtension.zip`。并解压缩。
 
@@ -51,7 +49,7 @@
 
 ## 使用说明
 
-如果你使用过 YouTube 的原插件，你会发现在核心功能和交互上，本插件基本没有做出大的改动。可以先参照原插件的使用方法尝试使用。
+如果你使用过原插件，你会发现在核心功能和交互上，本插件基本没有做出大的改动。可以先参照原插件的使用方法尝试使用。
 
 可以先在这个[示例视频](https://www.bilibili.com/video/BV1bY4y1v7Mb/)上试一试精准空降的快乐！
 
@@ -65,7 +63,7 @@
 
 - 放弃了第三方镜像站支持。如果有使用人数多的镜像站，欢迎讨论添加支持。
 
-- 加入了绑定搬运视频的功能。绑定的油管视频可以自动从 SponsorBlock 数据库中获取片段信息。
+- 加入了绑定搬运视频的功能。绑定的视频可以自动从 SponsorBlock 数据库中获取片段信息。
 
 - 更新 UI。
 
@@ -73,9 +71,7 @@
 
 参考 [Github Project](https://github.com/users/hanydd/projects/2/)
 
-# 服务端
-
-服务端代码：https://github.com/hanydd/BilibiliSponsorBlockServer
+# 服务端及数据
 
 为了方便大家二次开发，所有片段的数据现在开放下载：https://bsbsb.top/database.zip
 

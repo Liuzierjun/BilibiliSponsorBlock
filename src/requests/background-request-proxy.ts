@@ -1,11 +1,7 @@
+import * as CompileConfig from "../../config.json";
+import Config from "../config";
 import { objectToURI } from "../utils/";
-import { getHash } from "../utils/hash";
-
-export interface FetchResponse {
-    responseText: string;
-    status: number;
-    ok: boolean;
-}
+import { FetchResponse } from "./type/requestType";
 
 /**
  * Sends a request to the specified url
@@ -19,7 +15,7 @@ export async function sendRealRequestToCustomServer(
     url: string,
     data: Record<string, unknown> | null = {},
     headers: Record<string, string> = {}
-) {
+): Promise<FetchResponse> {
     // If GET, convert JSON to parameters
     if (type.toLowerCase() === "get") {
         url = objectToURI(url, data, true);
@@ -38,46 +34,35 @@ export async function sendRealRequestToCustomServer(
         body: data ? JSON.stringify(data) : null,
     });
 
+    if (response?.ok) {
+        return {
+            responseText: await response.text(),
+            status: response.status,
+            ok: response.ok,
+        };
+    } else {
+        return { responseText: await response.text(), status: response.status, ok: false };
+    }
+}
+
+function getServerAddress(): string {
+    return Config.config.testingServer ? CompileConfig.testingServerAddress : Config.config.serverAddress;
+}
+
+export async function callAPI(
+    type: string,
+    endpoint: string,
+    extraRequestData: Record<string, unknown> = {},
+    skipServerCache: boolean = false,
+    headers: Record<string, string> = {}
+): Promise<FetchResponse> {
+    const url = `${getServerAddress()}${endpoint}`;
+
+    if (skipServerCache) {
+        headers["X-SKIP-CACHE"] = "1";
+    }
+
+    const response = await sendRealRequestToCustomServer(type, url, extraRequestData, headers);
+
     return response;
-}
-
-export function setupBackgroundRequestProxy() {
-    chrome.runtime.onMessage.addListener((request, sender, callback) => {
-        if (request.message === "sendRequest") {
-            sendRealRequestToCustomServer(request.type, request.url, request.data, request.headers)
-                .then(async (response) => {
-                    callback({ responseText: await response.text(), status: response.status, ok: response.ok });
-                })
-                .catch(() => {
-                    callback({ responseText: "", status: -1, ok: false });
-                });
-
-            return true;
-        }
-
-        if (request.message === "getHash") {
-            getHash(request.value, request.times)
-                .then(callback)
-                .catch((e) => {
-                    callback({ error: e?.message });
-                });
-
-            return true;
-        }
-
-        return false;
-    });
-}
-
-export function sendRequestToCustomServer(type: string, url: string, data = {}, headers = {}): Promise<FetchResponse> {
-    return new Promise((resolve, reject) => {
-        // Ask the background script to do the work
-        chrome.runtime.sendMessage({ message: "sendRequest", type, url, data, headers }, (response) => {
-            if (response.status !== -1) {
-                resolve(response);
-            } else {
-                reject(response);
-            }
-        });
-    });
 }

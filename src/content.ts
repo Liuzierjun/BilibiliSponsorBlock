@@ -14,7 +14,7 @@ import { setMessageNotice, showMessage } from "./render/MessageNotice";
 import { PlayerButton } from "./render/PlayerButton";
 import SkipNotice from "./render/SkipNotice";
 import SubmissionNotice from "./render/SubmissionNotice";
-import { FetchResponse } from "./requests/background-request-proxy";
+import { FetchResponse } from "./requests/type/requestType";
 import { getPortVideoByHash, postPortVideo, postPortVideoVote, updatePortedSegments } from "./requests/portVideo";
 import { asyncRequestToServer } from "./requests/requests";
 import { getSegmentsByVideoID } from "./requests/segments";
@@ -540,7 +540,9 @@ async function videoIDChange(): Promise<void> {
     checkPreviewbarState();
     setupDescriptionPill();
 
-    CommentListener();
+    if ([PageType.Video, PageType.List, PageType.Dynamic, PageType.Channel, PageType.Opus].includes(detectPageType()) &&
+        (Config.config.dynamicAndCommentSponsorBlocker && Config.config.commentSponsorBlock)
+    ) CommentListener();
 }
 
 /**
@@ -2735,7 +2737,7 @@ function hotkeyListener(e: KeyboardEvent): void {
             activeSkipKeybindElement.toggleSkip.call(activeSkipKeybindElement);
 
             /*
-             * b站视频播放器全屏或网页全屏时，快捷键`Enter`会聚焦到弹幕输入框
+             * 视频播放器全屏或网页全屏时，快捷键`Enter`会聚焦到弹幕输入框
              * 这里阻止了使用`Enter`跳过赞助片段时播放器的默认行为
              */
             if (key.key === 'Enter') {

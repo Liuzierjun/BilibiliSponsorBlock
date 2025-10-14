@@ -1,6 +1,6 @@
-import Config from "../config";
 import * as CompileConfig from "../../config.json";
-import { FetchResponse, sendRequestToCustomServer } from "./background-request-proxy";
+import Config from "../config";
+import { FetchResponse } from "./type/requestType";
 
 /**
  * Sends a request to a custom server
@@ -10,7 +10,16 @@ import { FetchResponse, sendRequestToCustomServer } from "./background-request-p
  * @param callback
  */
 function asyncRequestToCustomServer(type: string, url: string, data = {}, headers = {}): Promise<FetchResponse> {
-    return sendRequestToCustomServer(type, url, data, headers);
+    return new Promise((resolve, reject) => {
+        // Ask the background script to do the work
+        chrome.runtime.sendMessage({ message: "sendRequest", type, url, data, headers }, (response) => {
+            if (response.status !== -1) {
+                resolve(response);
+            } else {
+                reject(response);
+            }
+        });
+    });
 }
 
 /**

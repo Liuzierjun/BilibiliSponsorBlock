@@ -3,13 +3,14 @@ import {
     Category,
     CategorySelection,
     CategorySkipOption,
-    NoticeVisbilityMode,
+    NoticeVisibilityMode,
     PreviewBarOption,
     SponsorTime,
     BVID,
     SponsorHideType,
     DynamicSponsorSelection,
     DynamicSponsorOption,
+    HideFullVideoLabels,
 } from "./types";
 import { Keybind, ProtoConfig, keybindEquals } from "./config/config";
 import { HashedValue } from "./utils/hash";
@@ -39,14 +40,14 @@ interface SBConfig {
     checkTimeDanmakuSkip: boolean;
     muteSegments: boolean;
     fullVideoSegments: boolean;
-    fullVideoLabelsOnThumbnails: boolean;
+    fullVideoLabelsOnThumbnailsMode: number;
     manualSkipOnFullVideo: boolean;
     trackViewCount: boolean;
     trackViewCountInPrivate: boolean;
     trackDownvotes: boolean;
     trackDownvotesInPrivate: boolean;
     dontShowNotice: boolean;
-    noticeVisibilityMode: NoticeVisbilityMode;
+    noticeVisibilityMode: NoticeVisibilityMode;
     hideVideoPlayerControls: boolean;
     hideInfoButtonPlayerControls: boolean;
     hideDeleteButtonPlayerControls: boolean;
@@ -64,7 +65,7 @@ interface SBConfig {
     checkForUnlistedVideos: boolean;
     testingServer: boolean;
     ytInfoPermissionGranted: boolean;
-    allowExpirements: boolean;
+    allowExperiments: boolean;
     showDonationLink: boolean;
     showPopupDonationCount: number;
     showNewFeaturePopups: boolean;
@@ -90,6 +91,7 @@ interface SBConfig {
     showPreviewYoutubeButton: boolean;
     showPortVideoButton: boolean;
     cleanPopup: boolean;
+    enableCache: boolean;
 
     dynamicAndCommentSponsorWhitelistedChannels: boolean;
     dynamicAndCommentSponsorBlocker: boolean;
@@ -98,6 +100,7 @@ interface SBConfig {
     dynamicSponsorBlockerDebug: boolean;
     dynamicSpaceSponsorBlocker: boolean;
     commentSponsorBlock: boolean;
+    commentSponsorReplyBlock: boolean;
 
     showNewIcon: boolean;
 
@@ -243,13 +246,23 @@ function migrateOldSyncFormats(config: SBConfig) {
     }
 
     //动态贴片设置变量名迁移 // 0.8.1
-    if (config["dynamicSponsorBlockerer"]) {
-        config["dynamicAndCommentSponsorBlocker"] = config["dynamicSponsorBlockerer"];
-        delete config["dynamicSponsorBlockerer"];
+    if (config["dynamicSponsorBlocker"]) {
+        config["dynamicAndCommentSponsorBlocker"] = config["dynamicSponsorBlocker"];
+        delete config["dynamicSponsorBlocker"];
     }
     if (config["dynamicSponsorWhitelistedChannels"]) {
         config["dynamicAndCommentSponsorWhitelistedChannels"] = config["dynamicSponsorWhitelistedChannels"];
         delete config["dynamicSponsorWhitelistedChannels"];
+    }
+    //当整个视频都是某一类别时操作选项迁移
+    if (config["fullVideoLabelsOnThumbnails"]) {
+        if (config["fullVideoLabelsOnThumbnails"] === true) {
+            config["fullVideoLabelsOnThumbnailsMode"] = HideFullVideoLabels.Overlay;
+        } else {
+            config["fullVideoLabelsOnThumbnailsMode"] = HideFullVideoLabels.Disabled;
+        }
+        //fullVideoLabelsOnThumbnails被移除 0.9.2
+        delete config["fullVideoLabelsOnThumbnails"];
     }
 }
 
@@ -277,14 +290,14 @@ const syncDefaults = {
 
     muteSegments: true,
     fullVideoSegments: true,
-    fullVideoLabelsOnThumbnails: true,
+    fullVideoLabelsOnThumbnailsMode: HideFullVideoLabels.Overlay,
     manualSkipOnFullVideo: false,
     trackViewCount: true,
     trackViewCountInPrivate: true,
     trackDownvotes: true,
     trackDownvotesInPrivate: false,
     dontShowNotice: false,
-    noticeVisibilityMode: NoticeVisbilityMode.FadedForAutoSkip,
+    noticeVisibilityMode: NoticeVisibilityMode.FadedForAutoSkip,
     hideVideoPlayerControls: false,
     hideInfoButtonPlayerControls: false,
     hideDeleteButtonPlayerControls: false,
@@ -302,7 +315,7 @@ const syncDefaults = {
     checkForUnlistedVideos: false,
     testingServer: false,
     ytInfoPermissionGranted: false,
-    allowExpirements: true,
+    allowExperiments: true,
     showDonationLink: true,
     showPopupDonationCount: 0,
     showNewFeaturePopups: true,
@@ -323,10 +336,11 @@ const syncDefaults = {
     showPreviewYoutubeButton: true,
     showPortVideoButton: true,
     cleanPopup: false,
+    enableCache: true,
 
     dynamicAndCommentSponsorWhitelistedChannels: false,
     dynamicAndCommentSponsorBlocker: false,
-    dynamicAndCommentSponsorRegexPattern: 
+    dynamicAndCommentSponsorRegexPattern:
     "/" +
     "(618|11(?!1).11|双(?:11|十一|12|十二)|女神节)|" + // 购物节日
     "恰(?:个|了|到)?饭|金主|" + // 广告
@@ -343,6 +357,7 @@ const syncDefaults = {
     dynamicSponsorBlockerDebug: false,
     dynamicSpaceSponsorBlocker: false,
     commentSponsorBlock: true,
+    commentSponsorReplyBlock: false,
 
     showNewIcon: true,
 

@@ -57,6 +57,10 @@ export class ProtoConfig<T extends SyncStorage, U extends LocalStorage> {
                 }
             } else if (areaName === "local") {
                 for (const key in changes) {
+                    // skip bsb_cache
+                    if (key.startsWith("bsb_cache")) {
+                        continue;
+                    }
                     this.cachedLocalStorage![key] = changes[key].newValue;
                 }
 
@@ -177,9 +181,7 @@ export class ProtoConfig<T extends SyncStorage, U extends LocalStorage> {
                                 `${chrome.i18n.getMessage("syncDisabledWarning")}${
                                     this.inDeArrow ? `\n\n${chrome.i18n.getMessage("syncDisabledWarningDeArrow")}` : ``
                                 }${
-                                    isFirefox()
-                                        ? `\n\n${chrome.i18n.getMessage("syncDisabledFirefoxSuggestions")}`
-                                        : ``
+                                    isFirefox() ? `\n\n${chrome.i18n.getMessage("syncDisabledFirefoxSuggestions")}` : ``
                                 }`
                             );
                         }
@@ -190,7 +192,7 @@ export class ProtoConfig<T extends SyncStorage, U extends LocalStorage> {
             }),
             new Promise<void>((resolve) => {
                 chrome.storage.local.get(null, (items) => {
-                    this.cachedLocalStorage = <U> <unknown>(items ?? {}) ;
+                    this.cachedLocalStorage = <U>(<unknown>(items ?? {}));
                     resolve();
                 });
             }),
@@ -233,7 +235,6 @@ export class ProtoConfig<T extends SyncStorage, U extends LocalStorage> {
         return this.config !== null;
     }
 }
-
 
 export function keybindEquals(first: Keybind, second: Keybind): boolean {
     if (

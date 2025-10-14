@@ -5,7 +5,6 @@
     "scripting"
   ],
   "optional_permissions": [
-    "declarativeContent",
     "webNavigation"
   ],
   "host_permissions": [
@@ -22,6 +21,9 @@
       "matches": [
         "https://*.bilibili.com/*"
       ],
+      "exclude_matches": [
+        "https://live.bilibili.com/*"
+      ],
       "all_frames": true,
       "js": [
         "./js/content.js"
@@ -36,6 +38,9 @@
       "run_at": "document_start",
       "matches": [
         "https://*.bilibili.com/*"
+      ],
+      "exclude_matches": [
+        "https://live.bilibili.com/*"
       ],
       "all_frames": true,
       "js": [

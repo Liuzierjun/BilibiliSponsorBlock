@@ -1,13 +1,13 @@
 {
     "fullName": {
-        "message": "B站空降助手",
+        "message": "小电视空降助手",
         "description": "Name of the extension."
     },
     "shortName": {
         "message": "空降助手"
     },
     "Description": {
-        "message": "廣告？桌子都給你掀了(/= _ =)/~┴┴   帶您精準跳轉到贊助廣告結束或者高能時刻，自動跳過影片中的贊助廣告、訂閱提醒等片段。您也可以親自標記影片中的廣告並上傳，所有人都會從您的貢獻中受益。",
+        "message": "廣告？桌子都給你掀了(/= _ =)/~┴┴ 帶您精準跳轉到贊助廣告結束或者高能時刻，自動跳過影片中的贊助廣告、訂閱提醒等片段。您也可以親自標記影片中的廣告並上傳，所有人都會從您的貢獻中受益。",
         "description": "Description of the extension."
     },
     "400": {
@@ -119,7 +119,7 @@
         "message": "清除片段"
     },
     "openPopup": {
-        "message": "打開B站空降助手跳出視窗"
+        "message": "打開小电视空降助手跳出視窗"
     },
     "closePopup": {
         "message": "關閉跳出視窗"
@@ -134,7 +134,7 @@
         "message": "排序片段"
     },
     "submitCheck": {
-        "message": "您確定要提交它嗎？"
+        "message": "您確定要提交嗎？"
     },
     "whitelistChannel": {
         "message": "將頻道列入白名單"
@@ -273,7 +273,7 @@
         "message": "半透明所有的跳過提醒跳出視窗"
     },
     "longDescription": {
-        "message": "B站空降助手可幫您跳過影片中的贊助廣告、開場結尾、三連提醒和其他煩人片段。空降助手是一個瀏覽器擴展，任何人可以提交影片中的廣告和其他片段的開始和結束時間。如果有一人提交了資訊，其他所有使用此擴展的人都能直接跳過廣告片段。您也可以跳過音樂影片中的非音樂部分。",
+        "message": "小电视空降助手可幫您跳過影片中的贊助廣告、開場結尾、三連提醒和其他煩人片段。空降助手是一個瀏覽器擴展，任何人可以提交影片中的廣告和其他片段的開始和結束時間。如果有一人提交了資訊，其他所有使用此擴展的人都能直接跳過廣告片段。您也可以跳過音樂影片中的非音樂部分。",
         "description": "Full description of the extension on the store pages."
     },
     "website": {
@@ -495,7 +495,58 @@
         "message": "空降助手伺服器地址"
     },
     "customServerAddressDescription": {
-        "message": "B站空降助手的伺服器地址。\n不建議更改，除非您有自己的伺服器。"
+        "message": "小电视空降助手的伺服器地址。\n不建議更改，除非您有自己的伺服器。"
+    },
+    "cacheManagement": {
+        "message": "緩存管理"
+    },
+    "segmentResponseCache": {
+        "message": "影片片段緩存"
+    },
+    "videoLabelsCache": {
+        "message": "影片標籤緩存"
+    },
+    "totalCacheSize": {
+        "message": "總緩存大小"
+    },
+    "refreshCacheStats": {
+        "message": "重整統計"
+    },
+    "clearAllCache": {
+        "message": "清除所有緩存"
+    },
+    "confirmClearAllCache": {
+        "message": "確定要清除所有緩存嗎？此操作無法復原。"
+    },
+    "clearAllCacheSuccess": {
+        "message": "所有緩存已成功清除"
+    },
+    "clearAllCacheFailed": {
+        "message": "清除緩存失敗"
+    },
+    "cacheManagementDescription": {
+        "message": "顯示目前緩存使用狀況。緩存可以加速影片載入，但會占用儲存空間。"
+    },
+    "enableCache": {
+        "message": "啟用緩存"
+    },
+    "enableCacheDescription": {
+        "message": "啟用快取可以提高影片片段和標籤的載入速度。關閉時會清除所有已儲存的快取資料。"
+    },
+    "cacheType": {
+        "message": "緩存類型"
+    },
+    "cacheSize": {
+        "message": "緩存大小"
+    },
+    "cacheEntries": {
+        "message": "緩存項數"
+    },
+    "dailyHits": {
+        "message": "今日緩存命中次數"
+    },
+    "dailyDataRetrieved": {
+        "message": "今日緩存讀取量"
     },
     "save": {
         "message": "儲存"
@@ -590,7 +641,7 @@
         "message": "跳過後的影片仍然流暢，就好像跳過的片段不存在一樣"
     },
     "category_sponsor": {
-        "message": "廣告"
+        "message": "贊助/恰飯"
     },
     "category_sponsor_description": {
         "message": "付費推廣、付費推薦和直接廣告。不是自我推廣或免費提及他們喜歡的商品/創作者/網站/產品。"
@@ -617,7 +668,7 @@
         "message": "不是公司設計的產品和周邊"
     },
     "category_exclusive_access": {
-        "message": "柔性推廣/品牌合作"
+        "message": "獨家訪問/搶先體驗"
     },
     "category_exclusive_access_description": {
         "message": "僅用於標記整個影片。適用於影片展示創作者免費或獲得補助使用的產品或者服務，包括軟廣、產品推廣或者品牌推廣。"
@@ -630,7 +681,7 @@
         "message": "整個影片都在展示免費或獲得補助使用的內容"
     },
     "category_interaction": {
-        "message": "三連/訂閱提醒"
+        "message": "三連/互動提醒"
     },
     "category_interaction_description": {
         "message": "影片中間簡短提醒觀眾來一鍵三連或關注。 如果片段較長，或是有具體內容，則應分類為自我推廣。"
@@ -799,9 +850,32 @@
         "message": "當整個影片都是某一類別時顯示圖示",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
-    "fullVideoLabelsOnThumbnails": {
-        "message": "在影片封面上顯示標籤",
-        "description": "Referring to the category pill that is shown on videos that are entirely sponsor or entirely selfpromo on recommended videos, in searches or on the homepage."
+    "fullVideoLabelsOnThumbnailsMode": {
+        "message": "當整個影片都是某一類別時在影片卡片上? "
+    },
+    "fullVideoLabelsOnThumbnailsMode0": {
+        "message": "無動作"
+    },
+    "fullVideoLabelsOnThumbnailsMode1": {
+        "message": "顯示標籤"
+    },
+    "fullVideoLabelsOnThumbnailsMode2": {
+        "message": "隱藏此影片卡片 - 不推薦"
+    },
+    "fullVideoLabelsOnThumbnailsMode2_Warning": {
+        "message": "這將隱藏大量影片卡片，包括你想觀看的影片這還會影響排版, 請謹慎使用此功能。\n被隱藏的影片不會有任何標記，且無法手動查看。\n更推薦啟用「模糊此影片卡片 - 滑鼠懸停可查看內容」。"
+    },
+    "fullVideoLabelsOnThumbnailsMode3": {
+        "message": "模糊此影片卡片 - 滑鼠懸停可查看內容"
+    },
+    "fullVideoLabelsOnThumbnailsMode4": {
+        "message": "模糊此影片卡片 - 不推薦"
+    },
+    "fullVideoLabelsOnThumbnailsMode5": {
+        "message": "遮擋此影片卡片 - 不推薦"
+    },
+    "fullVideoBlock": {
+        "message": ""
     },
     "previewColor": {
         "message": "未提交顏色",
@@ -865,7 +939,7 @@
         "message": "手動隱藏"
     },
     "channelDataNotFound": {
-        "message": "未檢測到頻道ID。如果您正在使用嵌入式影片播放器，請到Bilibili網站觀看。也可能是B站更改了頁面布局，如果您認為是此問題，請在此評論：",
+        "message": "未檢測到頻道ID。如果您正在使用嵌入式影片播放器，請到網站觀看。也可能是网站更改了頁面布局，如果您認為是此問題，請在此評論：",
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at."
     },
     "invidiousPermissionRefresh": {
@@ -946,7 +1020,7 @@
     "chapterNameTooltipWarning": {
         "message": "提交的章節名稱與現有類別名稱相似。如果已經存在分類，您應該優先使用它。"
     },
-    "experiementOptOut": {
+    "experimentOptOut": {
         "message": "關閉所有實驗性功能",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
     },
@@ -968,7 +1042,7 @@
     "warningError": {
         "message": "嘗試確認警告時發生錯誤："
     },
-    "deArrowMessageRecieved": {
+    "deArrowMessageReceived": {
         "message": "您收到了來自版主的提示"
     },
     "Donate": {
@@ -1075,7 +1149,7 @@
         "message": "更改"
     },
     "bilibiliKeybindWarning": {
-        "message": "這是B站內建的捷徑。您確定要使用嗎？"
+        "message": "這是网站內建的捷徑。您確定要使用嗎？"
     },
     "betaServerWarning": {
         "message": "測試伺服器已啟用！"
@@ -1099,20 +1173,11 @@
         "message": "匯入",
         "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
     },
-    "redeemSuccess": {
-        "message": "兌換成功！"
-    },
-    "redeemFailed": {
-        "message": "註冊碼無效"
+    "disclaimer": {
+        "message": "所有片段均由用戶提交，由用戶投票排序"
     },
     "hideNewFeatureUpdates": {
         "message": "隱藏新功能提示"
-    },
-    "redeem": {
-        "message": "兌換"
-    },
-    "enterLicenseKey": {
-        "message": "輸入註冊碼"
     },
     "unsubmittedSegmentCounts": {
         "message": "您在 {1} 中有 {0}",
@@ -1208,7 +1273,7 @@
         "message": "請在提交之前預覽您的片段。您可以點擊預覽按鈕或使用以下快捷鍵：",
         "description": "Appears when trying to submit a segment without previewing it first. After the colon, the shortcut will appear"
     },
-    "hasbindedPortVideo": {
+    "hasBoundPortVideo": {
         "message": "已綁定影片："
     },
     "enterPortVideoURL": {
@@ -1251,10 +1316,10 @@
         "message": "即使是您白名單中的UP主，也會進行操作"
     },
     "dynamicSponsorShow": {
-        "message": "顯示廣告內容"
+        "message": "顯示連結內容"
     },
     "dynamicSponsorHide": {
-        "message": "隱藏廣告內容"
+        "message": "隱藏連結內容"
     },
     "dynamicAndCommentSponsorRegexPattern": {
         "message": "封鎖匹配正則: "
@@ -1263,22 +1328,22 @@
         "message": "預設正規表示式偏保守，建議根據您關注的UP主動態內容自行修改(如果您會編寫正規表示式)\n例如您關注的UP主們經常發某一個產品的廣告，您可以將該產品的名稱添加到正規表示式中"
     },
     "category_dynamicSponsor_sponsor": {
-        "message": "廣告"
+        "message": "商品連結"
     },
     "category_dynamicSponsor_sponsor_description": {
-        "message": "即包含商品連結，目前階段無法完全封鎖，因為部分軟廣可能不附帶連結或連結不是B站的規範"
+        "message": "即包含商品連結，目前階段無法完全屏蔽，因為部分軟廣可能不附帶連結或連結不是規範的"
     },
     "category_dynamicSponsor_forward_sponsor": {
-        "message": "轉發廣告"
+        "message": "轉發商品連結"
     },
     "category_dynamicSponsor_forward_sponsor_description": {
-        "message": "當轉發動態是包含商品連結的UP主動態時，該動態會被視為轉發廣告"
+        "message": "當轉發動態是包含商品連結的UP主動態時，該動態會被視為「轉發商品連結」"
     },
     "category_dynamicSponsor_suspicion_sponsor": {
-        "message": "疑似廣告"
+        "message": "疑似商品連結"
     },
     "category_dynamicSponsor_suspicion_sponsor_description": {
-        "message": "使用正規表示式對內容進行匹配來額外封鎖軟廣動態，是對「廣告」的補充，可能會誤封鎖或漏封鎖部分"
+        "message": "使用正規表示式對內容進行匹配來額外屏蔽柔性推廣，是對「商品連結」的補充，可能會誤屏蔽或漏屏蔽部分內容"
     },
     "showOverlay_DynamicSponsor": {
         "message": "僅添加標籤"
@@ -1292,27 +1357,33 @@
     "colorDynamicSponsor": {
         "message": "標籤顏色"
     },
-    "DynamicSponsorMatch":{
+    "DynamicSponsorMatch": {
         "message": " 關鍵字: ",
         "tip": "空格是用來間隔的"
     },
     "dynamicSponsorBlockerDebug": {
-        "message": "顯示疑似廣告匹配到的文字 / 正規表示式調試模式"
+        "message": "顯示疑似商品連結匹配到的文字 / 正規表示式調試模式"
     },
     "dynamicSponsorBlockerDebugDescription": {
         "message": "把鼠標懸浮到標籤時顯示匹配到的文字"
     },
-    "commentSponsorBlock":{
-        "message": "啟用評論區封鎖"
+    "commentSponsorBlock": {
+        "message": "啟用評論區隱藏"
     },
-    "commentSponsorBlockDescription":{
-        "message": "評論區目前僅支持 \"廣告\" 種類"
+    "commentSponsorBlockDescription": {
+        "message": "評論區目前僅支持「商品連結」類別"
     },
-    "dynamicSponsorBlock":{
-        "message": "啟用動態主頁封鎖"
+    "dynamicSponsorBlock": {
+        "message": "啟用動態主頁隱藏"
     },
-    "dynamicSponsorBlockDescription":{
+    "dynamicSponsorBlockDescription": {
         "message": "動態主頁支持全部類別 (不包含視頻)"
+    },
+    "commentSponsorReplyBlock": {
+        "message": "隱藏「商品連結」評論下的熱門子評論"
+    },
+    "commentSponsorReplyBlockDescription": {
+        "message": "啟用後將會隱藏「商品連結」評論下預設顯示的子評論\n您仍可以使用展開全部評論的方法查看全部評論 (即使是被隱藏的子評論)"
     },
     "requestVote": {
         "message": "片段標記準確嗎？"
