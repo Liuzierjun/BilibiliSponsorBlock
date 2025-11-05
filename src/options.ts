@@ -14,6 +14,7 @@ import { CategoryChooser, DynamicSponsorChooser } from "./render/CategoryChooser
 import { setMessageNotice, showMessage } from "./render/MessageNotice";
 import UnsubmittedVideos from "./render/UnsubmittedVideos";
 import WhitelistManager from "./render/WhitelistManager";
+import DynamicServerAddress from "./render/DynamicServerAddress";
 import { asyncRequestToServer } from "./requests/requests";
 import { CacheStats } from "./types";
 import { isFirefoxOrSafari, waitFor } from "./utils/";
@@ -25,6 +26,7 @@ let embed = false;
 const categoryChoosers: CategoryChooser[] = [];
 const unsubmittedVideos: UnsubmittedVideos[] = [];
 const whitelistManagers: WhitelistManager[] = [];
+const dynamicServerAddresses: DynamicServerAddress[] = [];
 
 if (document.readyState === "complete") {
     init();
@@ -167,6 +169,9 @@ async function init() {
                             } else {
                                 chrome.runtime.sendMessage({ message: "clearAllCache" });
                             }
+                            break;
+                        case "useDynamicServerAddress":
+                            updateServerAddressInputState();
                             break;
                     }
 
@@ -334,6 +339,9 @@ async function init() {
             case "react-WhitelistManagerComponent":
                 whitelistManagers.push(new WhitelistManager(optionsElements[i]));
                 break;
+            case "react-DynamicServerAddressComponent":
+                dynamicServerAddresses.push(new DynamicServerAddress(optionsElements[i]));
+                break;
             case "cache-stats": {
                 setupCacheManagement(optionsElements[i] as HTMLElement);
                 break;
@@ -368,6 +376,31 @@ async function init() {
     window.addEventListener("scroll", () => createStickyHeader());
 
     optionsContainer.classList.add("animated");
+
+    // 初始化服务器地址输入框状态
+    updateServerAddressInputState();
+}
+
+/**
+ * 更新服务器地址输入框的状态（启用动态地址时置灰）
+ */
+function updateServerAddressInputState() {
+    const serverAddressInput = document.getElementById("serverAddressInput") as HTMLInputElement;
+    const buttonContainer = document.querySelector('[data-sync="serverAddress"] .next-line') as HTMLElement;
+
+    if (serverAddressInput && Config.config.useDynamicServerAddress) {
+        serverAddressInput.disabled = true;
+        serverAddressInput.style.opacity = "0.6";
+        serverAddressInput.style.cursor = "not-allowed";
+        // 隐藏保存和重置按钮
+        if (buttonContainer) buttonContainer.style.display = "none";
+    } else if (serverAddressInput) {
+        serverAddressInput.disabled = false;
+        serverAddressInput.style.opacity = "";
+        serverAddressInput.style.cursor = "";
+        // 显示保存和重置按钮
+        if (buttonContainer) buttonContainer.style.display = "";
+    }
 }
 
 function createStickyHeader() {
@@ -421,6 +454,19 @@ function optionsConfigUpdateListener(changes: StorageChangesObject) {
     if (changes.whitelistedChannels) {
         for (const manager of whitelistManagers) {
             manager.update();
+        }
+    }
+
+    // 当动态服务器地址开关或服务器地址变化时，更新输入框状态和值
+    if (changes.useDynamicServerAddress || changes.serverAddress) {
+        updateServerAddressInputState();
+
+        // 更新服务器地址输入框的值
+        if (changes.serverAddress) {
+            const serverAddressInput = document.getElementById("serverAddressInput") as HTMLInputElement;
+            if (serverAddressInput) {
+                serverAddressInput.value = Config.config.serverAddress;
+            }
         }
     }
 }

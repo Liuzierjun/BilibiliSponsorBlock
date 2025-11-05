@@ -1451,5 +1451,26 @@
     },
     "cacheManagementTitle": {
         "message": "缓存管理"
+    },
+    "enableDynamicServerAddress": {
+        "message": "启用动态服务器地址"
+    },
+    "dynamicServerAddressDescription": {
+        "message": "自动从远程接口获取服务器地址。地址将被缓存以减少请求次数。"
+    },
+    "apiUrl": {
+        "message": "API 地址"
+    },
+    "refreshing": {
+        "message": "刷新中..."
+    },
+    "refreshDynamicServerAddress": {
+        "message": "刷新服务器地址"
+    },
+    "refreshServerAddressSuccess": {
+        "message": "服务器地址刷新成功！"
+    },
+    "refreshServerAddressFailed": {
+        "message": "服务器地址刷新失败！"
     }
 }
