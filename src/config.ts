@@ -105,6 +105,11 @@ interface SBConfig {
 
     showNewIcon: boolean;
 
+    // 动态服务器地址配置
+    useDynamicServerAddress: boolean; // 是否启用动态服务器地址
+    dynamicServerAddressUrl: string; // 获取服务器地址的接口URL
+    dynamicServerAddressTTL: number; // 缓存时间（毫秒）
+
     // Used to cache calculated text color info
     categoryPillColors: {
         [key in Category]: {
@@ -180,6 +185,12 @@ interface SBStorage {
 
     /* Contains unsubmitted segments that the user has created. */
     unsubmittedSegments: Record<string, SponsorTime[]>;
+
+    // 动态服务器地址缓存
+    dynamicServerAddressCache?: {
+        address: string;
+        fetchedAt: number; // timestamp
+    };
 }
 
 class ConfigClass extends ProtoConfig<SBConfig, SBStorage> {
@@ -372,6 +383,11 @@ const syncDefaults = {
     commentSponsorReplyBlock: false,
 
     showNewIcon: true,
+
+    // 动态服务器地址配置
+    useDynamicServerAddress: true,
+    dynamicServerAddressUrl: "https://bsbsb.top/api/serverAddress", // 默认接口地址
+    dynamicServerAddressTTL: 5 * 3600 * 1000, // 5小时
 
     categoryPillColors: {},
 

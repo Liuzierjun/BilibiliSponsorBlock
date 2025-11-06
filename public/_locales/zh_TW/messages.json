@@ -1450,5 +1450,26 @@
     },
     "cacheManagementTitle": {
         "message": "快取管理"
+    },
+    "enableDynamicServerAddress": {
+        "message": "啟用動態伺服器地址"
+    },
+    "dynamicServerAddressDescription": {
+        "message": "自動從遠端介面取得伺服器地址。地址將被快取以減少請求次數。"
+    },
+    "apiUrl": {
+        "message": "API 地址"
+    },
+    "refreshing": {
+        "message": "重整中..."
+    },
+    "refreshDynamicServerAddress": {
+        "message": "重整伺服器地址"
+    },
+    "refreshServerAddressSuccess": {
+        "message": "伺服器地址重整成功！"
+    },
+    "refreshServerAddressFailed": {
+        "message": "伺服器地址重整失敗！"
     }
 }

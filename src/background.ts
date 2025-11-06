@@ -10,6 +10,7 @@ import { chromeP } from "./utils/browserApi";
 import { getHash } from "./utils/hash";
 import { generateUserID } from "./utils/setup";
 import { setupTabUpdates } from "./utils/tab-updates";
+import { updateServerAddressCache, forceRefreshServerAddress, clearServerAddressCache } from "./utils/dynamicServerAddress";
 
 const popupPort: Record<string, chrome.runtime.Port> = {};
 
@@ -18,6 +19,9 @@ const contentScriptRegistrations = {};
 
 setupBackgroundRequestProxy();
 setupTabUpdates(Config);
+
+// 初始化动态服务器地址
+void initDynamicServerAddress();
 
 chrome.runtime.onMessage.addListener(function (request, sender, callback) {
     switch (request.message) {
@@ -103,6 +107,9 @@ chrome.runtime.onInstalled.addListener(function () {
             // Don't show update notification
             Config.config.categoryPillUpdate = true;
         }
+
+        // 在安装或更新时更新动态服务器地址
+        void initDynamicServerAddress();
     }, 1500);
 });
 
@@ -236,8 +243,53 @@ function setupBackgroundRequestProxy() {
             return true;
         }
 
+        // ============ Dynamic Server Address Handlers ============
+        if (request.message === "updateServerAddress") {
+            updateServerAddressCache()
+                .then(() => callback({ ok: true }))
+                .catch(() => callback({ ok: false }));
+            return true;
+        }
+
+        if (request.message === "forceRefreshServerAddress") {
+            forceRefreshServerAddress()
+                .then((success) => callback({ ok: success }))
+                .catch(() => callback({ ok: false }));
+            return true;
+        }
+
+        if (request.message === "clearServerAddressCache") {
+            try {
+                clearServerAddressCache();
+                callback({ ok: true });
+            } catch {
+                callback({ ok: false });
+            }
+            return true;
+        }
+
         return false;
     });
+}
+
+/**
+ * 初始化动态服务器地址
+ * 在扩展启动时调用，检查并更新服务器地址缓存
+ */
+async function initDynamicServerAddress(): Promise<void> {
+    // 等待配置加载完成
+    while (!Config.isReady()) {
+        await new Promise((resolve) => setTimeout(resolve, 100));
+    }
+
+    // 启动时更新服务器地址
+    await updateServerAddressCache();
+
+    // 设置定期更新（每隔TTL的一半检查一次）
+    const checkInterval = Math.max(Config.config.dynamicServerAddressTTL / 2, 60000); // 至少1分钟
+    setInterval(() => {
+        void updateServerAddressCache();
+    }, checkInterval);
 }
 
 /**

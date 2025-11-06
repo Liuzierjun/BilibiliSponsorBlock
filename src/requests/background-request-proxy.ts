@@ -1,7 +1,6 @@
-import * as CompileConfig from "../../config.json";
-import Config from "../config";
 import { objectToURI } from "../utils/";
 import { FetchResponse } from "./type/requestType";
+import { getServerAddress as getDynamicServerAddress } from "../utils/dynamicServerAddress";
 
 /**
  * Sends a request to the specified url
@@ -45,8 +44,12 @@ export async function sendRealRequestToCustomServer(
     }
 }
 
+/**
+ * 获取服务器地址
+ * 优先级：测试服务器 > 动态服务器地址 > 默认服务器地址
+ */
 function getServerAddress(): string {
-    return Config.config.testingServer ? CompileConfig.testingServerAddress : Config.config.serverAddress;
+    return getDynamicServerAddress();
 }
 
 export async function callAPI(
